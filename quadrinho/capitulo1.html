@@ -59,8 +59,10 @@
         }
 
         function driveFileIdToImageUrl(id) {
-            return `https://drive.google.com/uc?export=download&id=${id}`;
+        // Usa a própria Google Drive API para servir o conteúdo do arquivo
+            return `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=${API_KEY}`;
         }
+
 
         async function loadImages() {
             try {
