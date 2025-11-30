@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omnitrix Legacy – Capítulo 1</title>
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="page-layout">
+
+    <div class="site-container">
+        <header>
+            <h1>Omnitrix Legacy – Capítulo 1</h1>
+            <p>Quadrinho feito por fã 🛸</p>
+            <p><a href="../index.html">← Voltar para a página inicial</a></p>
+        </header>
+
+        <!-- galeria automática (Drive) -->
+        <main class="gallery" id="gallery"></main>
+
+        <footer>
+            Capítulo 1 – Omnitrix Legacy
+        </footer>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+            <img id="lightboxImage" />
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <script>
+        // ================= CONFIGURAÇÃO =================
+
+        // ⛔ Cole aqui sua API Key:
+        const API_KEY = "AIzaSyAIuClMi1uuA59n5dT0jlDgfYZPo4yjf0c";
+
+        // ✅ ID da sua pasta "Capitulo 1" no Drive:
+        const FOLDER_ID = "1VP0i-8RsJ-VKoI3gz6E_cjDgiTtlnZgM";
+
+        // ===============================================
+
+
+        // ===== Drive API =====
+
+        function getDriveListUrl(folderId) {
+            const query = encodeURIComponent(`'${folderId}' in parents and mimeType contains 'image/' and trashed = false`);
+            const fields = encodeURIComponent("files(id,name)");
+            return `https://www.googleapis.com/drive/v3/files?q=${query}&orderBy=name&fields=${fields}&key=${API_KEY}`;
+        }
+
+        function driveFileIdToImageUrl(id) {
+            return `https://drive.google.com/uc?export=download&id=${id}`;
+        }
+
+        async function loadImages() {
+            try {
+                const res = await fetch(getDriveListUrl(FOLDER_ID));
+                const data = await res.json();
+
+                const gallery = document.getElementById("gallery");
+
+                if (!data.files || data.files.length === 0) {
+                    gallery.innerHTML = "<p>Nenhuma página encontrada neste capítulo.</p>";
+                    return;
+                }
+
+                data.files.forEach((file, i) => {
+                    const article = document.createElement("article");
+                    article.className = "art-card";
+
+                    const img = document.createElement("img");
+                    img.src = driveFileIdToImageUrl(file.id);
+                    img.alt = file.name || `Página ${i + 1}`;
+                    img.dataset.index = i;
+                    img.dataset.caption = img.alt;
+
+                    article.appendChild(img);
+                    gallery.appendChild(article);
+                });
+
+                initLightbox();
+            } catch (e) {
+                document.getElementById("gallery").innerHTML = "<p>Erro ao carregar imagens do capítulo.</p>";
+                console.error(e);
+            }
+        }
+
+        // ===== Lightbox =====
+
+        function initLightbox() {
+            const lightbox = document.getElementById("lightbox");
+            const image = document.getElementById("lightboxImage");
+            const caption = document.getElementById("lightboxCaption");
+
+            const prev = document.getElementById("lightboxPrev");
+            const next = document.getElementById("lightboxNext");
+            const close = document.getElementById("lightboxClose");
+
+            const images = [...document.querySelectorAll(".art-card img")];
+            let current = 0;
+
+            function open(i) {
+                current = i;
+                image.src = images[i].src;
+                caption.textContent = images[i].alt;
+                lightbox.classList.add("lightbox--open");
+            }
+
+            function hide() {
+                lightbox.classList.remove("lightbox--open");
+            }
+
+            images.forEach((img, i) => img.onclick = () => open(i));
+            close.onclick = hide;
+            next.onclick = () => open((current + 1) % images.length);
+            prev.onclick = () => open((current - 1 + images.length) % images.length);
+
+            document.onkeydown = e => {
+                if (!lightbox.classList.contains("lightbox--open")) return;
+                if (e.key === "Escape") hide();
+                if (e.key === "ArrowRight") next.click();
+                if (e.key === "ArrowLeft") prev.click();
+            };
+
+            lightbox.onclick = e => {
+                if (e.target === lightbox) hide();
+            };
+        }
+
+        // ===== Inicialização =====
+        loadImages();
+    </script>
+
+</body>
+
+</html>

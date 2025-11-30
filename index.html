@@ -4,362 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meus Desenhos</title>
-    <style>
-        /* Reset básico */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <title>Omnitrix Legacy</title>
 
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #0f172a;
-            color: #e5e7eb;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 24px 16px 48px;
-        }
-
-        .site-container {
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 3vw, 2.5rem);
-            margin-bottom: 8px;
-        }
-
-        header p {
-            font-size: 0.95rem;
-            color: #9ca3af;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-        }
-
-        .art-card {
-            background: #020617;
-            border-radius: 16px;
-            padding: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-            cursor: pointer;
-        }
-
-        .art-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
-            border-color: rgba(129, 140, 248, 0.8);
-        }
-
-        .art-card img {
-            width: 100%;
-            border-radius: 12px;
-            display: block;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-        }
-
-        .art-card-info {
-            margin-top: 8px;
-        }
-
-        .art-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .art-meta {
-            font-size: 0.75rem;
-            color: #9ca3af;
-            margin-top: 3px;
-        }
-
-        footer {
-            margin-top: 28px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
-
-        footer a {
-            color: #a5b4fc;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Lightbox (ampliar imagem) */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-            z-index: 50;
-        }
-
-        .lightbox--open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 900px;
-            width: 100%;
-        }
-
-        .lightbox img {
-            width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 16px;
-            background: #020617;
-            padding: 8px;
-            border: 1px solid rgba(148, 163, 184, 0.4);
-        }
-
-        .lightbox-caption {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            color: #e5e7eb;
-            text-align: center;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 36px;
-            height: 36px;
-            border-radius: 999px;
-            border: none;
-            background: #0f172a;
-            color: #e5e7eb;
-            cursor: pointer;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-        }
-
-        .lightbox-close:hover {
-            background: #111827;
-        }
-
-        /* Botões de navegação do lightbox */
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            border: none;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transition: background 0.2s ease;
-        }
-
-        .lightbox-nav:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .lightbox-prev {
-            left: 10px;
-        }
-
-        .lightbox-next {
-            right: 10px;
-        }
-
-        /* Garante que o container do lightbox seja referência de posição */
-        .lightbox-content {
-            position: relative;
-        }
-
-
-        @media (max-width: 480px) {
-            body {
-                padding: 16px 10px 32px;
-            }
-
-            .art-card {
-                padding: 8px;
-            }
-        }
-    </style>
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
     <div class="site-container">
         <header>
-            <h1>Ben 10 - Omnitrix Legacy</h1>
-            <p>Concepts</p>
+            <h1>Omnitrix Legacy</h1>
+            <p>Quadrinho feito por fã (Victor, irmão e primo) 🛸</p>
+            <p>Projeto independente baseado em Ben 10</p>
         </header>
 
-        <main class="gallery">
-            <!-- Exemplo 1 -->
-            <article class="art-card">
-                <img src="imagens/desenho1.jpg" alt="Desenho 1" data-caption="Descrição" />
-                <div class="art-card-info">
-                    <div class="art-title">Desenho 1</div>
-                    <div class="art-meta">Exemplo Técnica: lápis / Ano: 2025</div>
-                </div>
-            </article>
+        <main>
+            <section style="text-align:center; margin-bottom: 32px;">
+                <h2 style="margin-bottom: 12px;">Quadrinho</h2>
 
-            <!-- Exemplo 2 -->
-            <article class="art-card">
-                <img src="imagens/desenho2.png" alt="Desenho 2" data-caption="Descrição" />
-                <div class="art-card-info">
-                    <div class="art-title">Desenho 2</div>
-                    <div class="art-meta">Exemplo Técnica: digital / Ano: 2025</div>
-                </div>
-            </article>
+                <p><a href="quadrinho/capitulo1.html">Capítulo 1</a></p>
+                <p><em>Os próximos capítulos aparecerão aqui conforme forem finalizados.</em></p>
+            </section>
 
-            <!-- Exemplo 3 -->
-            <article class="art-card">
-                <img src="imagens/desenho3.jpg" alt="Desenho 3" data-caption="Descrição" />
-                <div class="art-card-info">
-                    <div class="art-title">Desenho 3</div>
-                    <div class="art-meta">Exemplo Técnica: nanquim / Ano: 2024</div>
-                </div>
-            </article>
-
-            <!-- Você pode continuar copiando esse bloco <article> para mais desenhos -->
+            <section style="text-align:center;">
+                <h2 style="margin-bottom: 12px;">Concept Arts</h2>
+                <p>(Em breve)</p>
+            </section>
         </main>
 
         <footer>
-            teste
+            Projeto feito por fãs • Sem fins comerciais
         </footer>
     </div>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose" aria-label="Fechar imagem">&times;</button>
-
-            <!-- Botão anterior -->
-            <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Imagem anterior">‹</button>
-
-            <!-- Botão próximo -->
-            <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima imagem">›</button>
-
-            <img src="" alt="" id="lightboxImage" />
-            <p class="lightbox-caption" id="lightboxCaption"></p>
-        </div>
-    </div>
-
-
-    <script>
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImage = document.getElementById("lightboxImage");
-        const lightboxCaption = document.getElementById("lightboxCaption");
-        const lightboxClose = document.getElementById("lightboxClose");
-        const lightboxPrev = document.getElementById("lightboxPrev");
-        const lightboxNext = document.getElementById("lightboxNext");
-
-        const galleryImages = Array.from(document.querySelectorAll(".art-card img"));
-        let currentIndex = 0;
-
-        function openLightbox(index) {
-            const img = galleryImages[index];
-            if (!img) return;
-
-            currentIndex = index;
-            lightboxImage.src = img.src;
-            lightboxImage.alt = img.alt;
-            lightboxCaption.textContent = img.dataset.caption || img.alt || "";
-            lightbox.classList.add("lightbox--open");
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove("lightbox--open");
-            lightboxImage.src = "";
-        }
-
-        function showNext() {
-            const nextIndex = (currentIndex + 1) % galleryImages.length;
-            openLightbox(nextIndex);
-        }
-
-        function showPrev() {
-            const prevIndex =
-                (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-            openLightbox(prevIndex);
-        }
-
-        // Clique na imagem abre o lightbox já com índice
-        galleryImages.forEach((img, index) => {
-            img.dataset.index = index;
-            img.addEventListener("click", () => openLightbox(index));
-        });
-
-        // Botões de navegação
-        lightboxNext.addEventListener("click", (event) => {
-            event.stopPropagation();
-            showNext();
-        });
-
-        lightboxPrev.addEventListener("click", (event) => {
-            event.stopPropagation();
-            showPrev();
-        });
-
-        // Fechar
-        lightboxClose.addEventListener("click", (event) => {
-            event.stopPropagation();
-            closeLightbox();
-        });
-
-        lightbox.addEventListener("click", (event) => {
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
-        });
-
-        // Teclado: Esc fecha, setas navegam
-        document.addEventListener("keydown", (event) => {
-            if (!lightbox.classList.contains("lightbox--open")) return;
-
-            if (event.key === "Escape") {
-                closeLightbox();
-            } else if (event.key === "ArrowRight") {
-                showNext();
-            } else if (event.key === "ArrowLeft") {
-                showPrev();
-            }
-        });
-    </script>
 </body>
 
 </html>
