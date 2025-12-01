@@ -10,18 +10,36 @@
 </head>
 
 <body class="page-layout">
+    <div class="site-container" id="top">
 
-    <div class="site-container">
-        <header>
-            <h1>Omnitrix Legacy – Capítulo 1</h1>
-            <p>Quadrinho feito por fã 🛸</p>
-            <p><a href="../index.html">← Voltar para a página inicial</a></p>
+        <!-- NAVBAR (mesma da home) -->
+        <header class="top-nav">
+            <div class="top-nav-inner">
+                <a href="../index.html" class="top-nav-brand">Omnitrix Legacy</a>
+
+                <nav class="top-nav-links">
+                    <a href="../index.html#top">Home</a>
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#chapters">Chapters</a>
+                    <a href="../index.html#concepts">Concepts</a>
+                </nav>
+            </div>
         </header>
 
+        <!-- HEADER DO CAPÍTULO -->
+        <header>
+            <h1>Capítulo 1</h1>
+            <p>Quadrinho feito por fã • leitura em desenvolvimento</p>
+            <p>
+                <a href="../index.html">← Voltar para a página inicial</a>
+            </p>
+        </header>
+
+        <!-- PÁGINAS DO CAPÍTULO -->
         <main class="gallery" id="gallery"></main>
 
         <footer>
-            Capítulo 1 – Omnitrix Legacy
+            Capítulo 1 – Omnitrix Legacy • Projeto de fã, sem fins comerciais.
         </footer>
     </div>
 
@@ -31,15 +49,16 @@
             <button class="lightbox-close" id="lightboxClose">&times;</button>
             <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
             <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
-            <img id="lightboxImage" />
+            <img id="lightboxImage" alt="">
             <p class="lightbox-caption" id="lightboxCaption"></p>
         </div>
     </div>
 
+    <!-- SCRIPT DO CAPÍTULO 1 -->
     <script>
         // ================= CONFIG =================
+        // TODO: mover API_KEY para backend / serverless function
         const API_KEY = "AIzaSyBsBX9QLO1wXmfwykn9f8d3UyGd3bI0IzQ";
-
         const FOLDER_ID = "16I8HsnRp0jzXkLeEDrc6f2tHOogfA9EB";
 
         // ============ DRIVE API HELPERS ============
@@ -49,7 +68,6 @@
             return `https://www.googleapis.com/drive/v3/files?q=${query}&orderBy=name&fields=${fields}&key=${API_KEY}`;
         }
 
-        // URL para baixar/servir a imagem direto da API
         function driveFileIdToImageUrl(id) {
             return `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=${API_KEY}`;
         }
@@ -58,7 +76,6 @@
             try {
                 const res = await fetch(getDriveListUrl(FOLDER_ID));
                 const data = await res.json();
-
                 const gallery = document.getElementById("gallery");
 
                 if (!data.files || data.files.length === 0) {
@@ -131,7 +148,6 @@
         // Init
         loadImages();
     </script>
-
 </body>
 
 </html>
