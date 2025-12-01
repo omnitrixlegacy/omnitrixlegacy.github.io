@@ -1,115 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Omnitrix Legacy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omnitrix Legacy</title>
 
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-    <div class="site-container">
+<div class="site-container" id="top">
 
-        <!-- HERO -->
-        <header class="home-hero">
-            <p class="home-tagline">Fan-made comic project</p>
-            <h1>Omnitrix Legacy</h1>
-            <p class="home-subtitle">
-                Uma história feita por fãs, inspirada em Ben 10. Criada por Victor, seu irmão e seu primo —
-                sem fins comerciais.
-            </p>
-            <!-- Botão futuro de "Continue reading" -->
-            <!--
-    <a href="#" class="btn-primary">Continue reading</a>
-    -->
-        </header>
+  <!-- NAVBAR -->
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <a href="#top" class="top-nav-brand">Omnitrix Legacy</a>
 
-        <!-- QUADRINHO -->
-        <main>
-            <section class="home-section">
-                <div class="home-section-header">
-                    <h2>Comic chapters</h2>
-                    <p>Leia os capítulos já disponíveis e acompanhe a evolução da história.</p>
-                </div>
-
-                <div class="home-grid">
-                    <!-- Capítulo 1 publicado -->
-                    <article class="home-card">
-                        <div class="home-card-header">
-                            <span class="status-pill status-live">Available</span>
-                        </div>
-                        <h3>Chapter 1</h3>
-                        <p class="home-card-text">
-                            Primeiro capítulo de Omnitrix Legacy, introduzindo o universo e os personagens.
-                        </p>
-                        <a href="quadrinho/capitulo1.html" class="btn-secondary">Read chapter</a>
-                    </article>
-
-                    <!-- Capítulos futuros como "coming soon" -->
-                    <article class="home-card home-card-muted">
-                        <div class="home-card-header">
-                            <span class="status-pill status-soon">Coming soon</span>
-                        </div>
-                        <h3>Chapter 2</h3>
-                        <p class="home-card-text">
-                            Planejado. A continuação direta dos eventos do Capítulo 1.
-                        </p>
-                    </article>
-
-                    <article class="home-card home-card-muted">
-                        <div class="home-card-header">
-                            <span class="status-pill status-soon">Coming soon</span>
-                        </div>
-                        <h3>Chapter 3</h3>
-                        <p class="home-card-text">
-                            Em ideias. Novos personagens e desafios.
-                        </p>
-                    </article>
-
-                    <article class="home-card home-card-muted">
-                        <div class="home-card-header">
-                            <span class="status-pill status-soon">Coming soon</span>
-                        </div>
-                        <h3>Chapters 4 &amp; 5</h3>
-                        <p class="home-card-text">
-                            Conteúdo planejado para o futuro do projeto.
-                        </p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- CONCEPT ARTS -->
-            <section class="home-section">
-                <div class="home-section-header">
-                    <h2>Concept arts</h2>
-                    <p>Explorações visuais e designs dos personagens, tecnologias e cenas.</p>
-                </div>
-
-                <div class="home-grid">
-                    <article class="home-card">
-                        <div class="home-card-header">
-                            <span class="status-pill status-soon">In progress</span>
-                        </div>
-                        <h3>Concept gallery</h3>
-                        <p class="home-card-text">
-                            Galeria dedicada aos concept arts do projeto. Em breve com integração ao novo Drive.
-                        </p>
-                        <!-- Quando a página de concepts existir, trocar o href -->
-                        <!-- <a href="concepts/index.html" class="btn-secondary">Open gallery</a> -->
-                    </article>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>Projeto de fã. Ben 10 e Omnitrix são propriedade de seus respectivos detentores.</p>
-            <p>Sem fins comerciais.</p>
-        </footer>
+      <nav class="top-nav-links">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#concepts">Concepts</a>
+      </nav>
     </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="home-hero">
+    <p class="home-tagline">Fan-made comic project</p>
+    <h1>Omnitrix Legacy</h1>
+    <p class="home-subtitle">
+      Uma história feita por fãs, inspirada em Ben 10. Criada por Victor, seu irmão e seu primo —
+      sem fins comerciais.
+    </p>
+    <!-- Futuro: botão "Continue reading" -->
+    <!-- <a href="#" class="btn-primary">Continue reading</a> -->
+  </section>
+
+  <main>
+
+    <!-- CHAPTERS SECTION -->
+    <section class="home-section" id="chapters">
+      <div class="home-section-header">
+        <h2>Comic chapters</h2>
+        <p>Leia os capítulos já disponíveis e acompanhe a evolução da história.</p>
+      </div>
+
+      <div class="home-grid">
+        <!-- Capítulo 1 publicado -->
+        <article class="home-card">
+          <div class="home-card-header">
+            <span class="status-pill status-live">Available</span>
+          </div>
+          <h3>Chapter 1</h3>
+          <p class="home-card-text">
+            Primeiro capítulo de Omnitrix Legacy, introduzindo o universo e os personagens.
+          </p>
+          <a href="quadrinho/capitulo1.html" class="btn-secondary">Read chapter</a>
+        </article>
+
+        <!-- Capítulos futuros como "coming soon" -->
+        <article class="home-card home-card-muted">
+          <div class="home-card-header">
+            <span class="status-pill status-soon">Coming soon</span>
+          </div>
+          <h3>Chapter 2</h3>
+          <p class="home-card-text">
+            Planejado. A continuação direta dos eventos do Capítulo 1.
+          </p>
+        </article>
+
+        <article class="home-card home-card-muted">
+          <div class="home-card-header">
+            <span class="status-pill status-soon">Coming soon</span>
+          </div>
+          <h3>Chapter 3</h3>
+          <p class="home-card-text">
+            Em ideias. Novos personagens e desafios.
+          </p>
+        </article>
+
+        <article class="home-card home-card-muted">
+          <div class="home-card-header">
+            <span class="status-pill status-soon">Coming soon</span>
+          </div>
+          <h3>Chapters 4 &amp; 5</h3>
+          <p class="home-card-text">
+            Conteúdo planejado para o futuro do projeto.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONCEPTS SECTION -->
+    <section class="home-section" id="concepts">
+      <div class="home-section-header">
+        <h2>Concept arts</h2>
+        <p>Explorações visuais e designs dos personagens, tecnologias e cenas.</p>
+      </div>
+
+      <div class="home-grid">
+        <article class="home-card">
+          <div class="home-card-header">
+            <span class="status-pill status-soon">In progress</span>
+          </div>
+          <h3>Concept gallery</h3>
+          <p class="home-card-text">
+            Galeria dedicada aos concept arts do projeto. Em breve com integração ao novo Drive.
+          </p>
+          <!-- Quando a página de concepts existir, trocar o href -->
+          <!-- <a href="concepts/index.html" class="btn-secondary">Open gallery</a> -->
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="home-section" id="about">
+      <div class="home-section-header">
+        <h2>About</h2>
+        <p>Um pouco sobre o projeto e quem está por trás dele.</p>
+      </div>
+
+      <p class="home-card-text">
+        Omnitrix Legacy é um quadrinho feito por fãs, inspirado no universo de Ben 10.
+        O objetivo é explorar ideias próprias, personagens e histórias alternativas, sempre com respeito
+        aos detentores oficiais da marca, sem fins comerciais.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Projeto de fã. Ben 10 e Omnitrix são propriedade de seus respectivos detentores.</p>
+    <p>Sem fins comerciais.</p>
+  </footer>
+</div>
 
 </body>
-
 </html>
