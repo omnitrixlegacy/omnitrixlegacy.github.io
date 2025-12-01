@@ -197,3 +197,145 @@ footer {
         padding: 16px 10px 32px;
     }
 }
+
+/* ========= HOME PAGE ========= */
+
+.home-hero {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.home-hero h1 {
+    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    margin-bottom: 8px;
+}
+
+.home-tagline {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    color: #a5b4fc;
+    margin-bottom: 6px;
+}
+
+.home-subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    color: #9ca3af;
+}
+
+.home-section {
+    margin-top: 32px;
+}
+
+.home-section-header h2 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+.home-section-header p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+/* Grid de cards na home (reaproveita a vibe da gallery mas mais flexível) */
+.home-grid {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+/* Cards da home */
+.home-card {
+    background: #020617;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.home-card-muted {
+    opacity: 0.8;
+    border-style: dashed;
+}
+
+.home-card-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.home-card h3 {
+    font-size: 1.05rem;
+}
+
+.home-card-text {
+    font-size: 0.9rem;
+    color: #d1d5db;
+}
+
+/* Pills de status */
+.status-pill {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.status-live {
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(34, 197, 94, 0.9);
+    color: #bbf7d0;
+}
+
+.status-soon {
+    background: rgba(234, 179, 8, 0.12);
+    border-color: rgba(234, 179, 8, 0.9);
+    color: #facc15;
+}
+
+/* Botões */
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.btn-primary {
+    background: #4f46e5;
+    color: white;
+    border-color: #6366f1;
+}
+
+.btn-primary:hover {
+    background: #4338ca;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #e5e7eb;
+    border-color: rgba(148, 163, 184, 0.7);
+}
+
+.btn-secondary:hover {
+    border-color: #a5b4fc;
+}
+
+/* Ajuste em mobile */
+@media (max-width: 480px) {
+    .home-subtitle {
+        font-size: 0.85rem;
+    }
+}
