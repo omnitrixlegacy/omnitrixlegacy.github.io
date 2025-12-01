@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omnitrix Legacy – Capítulo 1</title>
 
-    <!-- CSS principal -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -15,11 +14,10 @@
     <div class="site-container">
         <header>
             <h1>Omnitrix Legacy – Capítulo 1</h1>
-            <p>Quadrinho feito por fã</p>
+            <p>Quadrinho feito por fã 🛸</p>
             <p><a href="../index.html">← Voltar para a página inicial</a></p>
         </header>
 
-        <!-- galeria automática (Drive) -->
         <main class="gallery" id="gallery"></main>
 
         <footer>
@@ -39,28 +37,22 @@
     </div>
 
     <script>
-        // ================= CONFIGURAÇÃO =================
-
+        // ================= CONFIG =================
         const API_KEY = "AIzaSyBsBX9QLO1wXmfwykn9f8d3UyGd3bI0IzQ";
 
         const FOLDER_ID = "16I8HsnRp0jzXkLeEDrc6f2tHOogfA9EB";
 
-        // ===============================================
-
-
-        // ===== Drive API =====
-
+        // ============ DRIVE API HELPERS ============
         function getDriveListUrl(folderId) {
             const query = encodeURIComponent(`'${folderId}' in parents and mimeType contains 'image/' and trashed = false`);
             const fields = encodeURIComponent("files(id,name)");
             return `https://www.googleapis.com/drive/v3/files?q=${query}&orderBy=name&fields=${fields}&key=${API_KEY}`;
         }
 
+        // URL para baixar/servir a imagem direto da API
         function driveFileIdToImageUrl(id) {
-            // Usa a própria Google Drive API para servir o conteúdo do arquivo
             return `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=${API_KEY}`;
         }
-
 
         async function loadImages() {
             try {
@@ -95,8 +87,7 @@
             }
         }
 
-        // ===== Lightbox =====
-
+        // ============ LIGHTBOX ============
         function initLightbox() {
             const lightbox = document.getElementById("lightbox");
             const image = document.getElementById("lightboxImage");
@@ -137,7 +128,7 @@
             };
         }
 
-        // ===== Inicialização =====
+        // Init
         loadImages();
     </script>
 
