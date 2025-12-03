@@ -12,7 +12,7 @@
 <body class="page-layout">
     <div class="site-container" id="top">
 
-        <!-- NAVBAR (mesma da home) -->
+        <!-- NAVBAR -->
         <header class="top-nav">
             <div class="top-nav-inner">
                 <a href="../index.html" class="top-nav-brand">Omnitrix Legacy</a>
@@ -54,27 +54,19 @@
         </div>
     </div>
 
-    <!-- SCRIPT DO CAPÍTULO 1 -->
+    <!-- SCRIPT ATUALIZADO DO CAPÍTULO 1 -->
     <script>
-        // ================= CONFIG =================
-        // TODO: mover API_KEY para backend / serverless function
-        const API_KEY = "AIzaSyBsBX9QLO1wXmfwykn9f8d3UyGd3bI0IzQ";
-        const FOLDER_ID = "16I8HsnRp0jzXkLeEDrc6f2tHOogfA9EB";
+        // ===================================
+        // CONFIGURAÇÃO DO BACKEND (ajuste aqui!)
+        // ===================================
+        const API_BASE = "https://omnitrix-backend.omnitrixlegacy.workers.dev";
 
-        // ============ DRIVE API HELPERS ============
-        function getDriveListUrl(folderId) {
-            const query = encodeURIComponent(`'${folderId}' in parents and mimeType contains 'image/' and trashed = false`);
-            const fields = encodeURIComponent("files(id,name)");
-            return `https://www.googleapis.com/drive/v3/files?q=${query}&orderBy=name&fields=${fields}&key=${API_KEY}`;
-        }
-
-        function driveFileIdToImageUrl(id) {
-            return `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=${API_KEY}`;
-        }
-
+        // ===================================
+        // FUNÇÃO PARA CARREGAR IMAGENS
+        // ===================================
         async function loadImages() {
             try {
-                const res = await fetch(getDriveListUrl(FOLDER_ID));
+                const res = await fetch(`${API_BASE}/chapters/1`);
                 const data = await res.json();
                 const gallery = document.getElementById("gallery");
 
@@ -88,7 +80,7 @@
                     article.className = "art-card";
 
                     const img = document.createElement("img");
-                    img.src = driveFileIdToImageUrl(file.id);
+                    img.src = `${API_BASE}/image/${file.id}`; // Imagem fornecida pelo backend
                     img.alt = file.name || `Página ${i + 1}`;
                     img.dataset.index = i;
                     img.dataset.caption = img.alt;
@@ -98,13 +90,16 @@
                 });
 
                 initLightbox();
-            } catch (e) {
-                document.getElementById("gallery").innerHTML = "<p>Erro ao carregar imagens do capítulo.</p>";
-                console.error(e);
+            } catch (error) {
+                console.error("Erro ao carregar imagens:", error);
+                document.getElementById("gallery").innerHTML =
+                    "<p>Erro ao carregar as imagens do capítulo.</p>";
             }
         }
 
-        // ============ LIGHTBOX ============
+        // ===================================
+        // LIGHTBOX
+        // ===================================
         function initLightbox() {
             const lightbox = document.getElementById("lightbox");
             const image = document.getElementById("lightboxImage");
@@ -145,7 +140,7 @@
             };
         }
 
-        // Init
+        // Inicia o carregamento
         loadImages();
     </script>
 </body>
